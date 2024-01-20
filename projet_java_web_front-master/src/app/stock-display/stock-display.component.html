@@ -1,0 +1,97 @@
+<div class="container">
+  <h1>Stock Visualizer</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row flex">
+      <div class="form-group col">
+        <label>Stock Name</label>
+        <input type="text" formControlName="stock_key" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && stockRequestForm['stock_key'].errors }"/>
+        <div *ngIf="submitted && stockRequestForm['stock_key'].errors" class="invalid-feedback">
+          <div *ngIf="stockRequestForm['stock_key'].errors?.['required']">Stock name is
+            required
+          </div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label>Date From / Date Target</label><span class="text-muted"> (YYYY-MM-DD)</span>
+        <input type="text" formControlName="date_from" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && stockRequestForm['date_from'].errors }"/>
+        <div *ngIf="submitted && stockRequestForm['date_from'].errors" class="invalid-feedback">
+          <div *ngIf="stockRequestForm['date_from'].errors">A date (YYYY-MM-DD) is
+            required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Date To</label>
+        <input type="text" formControlName="date_to" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && stockRequestForm['date_to'].errors }"/>
+        <div *ngIf="submitted && stockRequestForm['date_to'].errors" class="invalid-feedback">
+          <div *ngIf="stockRequestForm['date_to'].errors">A date's format should be "YYYY-MM-DD"</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <p>
+        <button type="submit" class="btn btn-dark"
+                [disabled]="!form.valid">Submit
+        </button>
+      </p>
+    </div>
+
+  </form>
+
+  <h3>{{stock_key}} (Last Updated:{{recordMetaData?.updatedDate}})</h3>
+  <table class="table table-striped">
+    <thead>
+    <th>Daily Consultation</th>
+    <th>Weekly Consultation</th>
+    <th>Total Consultation</th>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{recordMetaData?.todayConsultedCount}}</td>
+      <td>{{recordMetaData?.weeklyConsultedCount}}</td>
+      <td>{{recordMetaData?.totalConsultedCount}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped">
+    <thead>
+      <th>Date</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+<!--    </tr>-->
+    </thead>
+    <tbody>
+    <tr *ngFor="let dataPoint of DataPointList">
+      <td>{{dataPoint.date}}</td>
+      <td>{{dataPoint["1. open"]}}</td>
+      <td>{{dataPoint["2. high"]}}</td>
+      <td>{{dataPoint["3. low"]}}</td>
+      <td>{{dataPoint["4. close"]}}</td>
+      <td>{{dataPoint["5. volume"]}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <h3>Top Stocks</h3>
+<!--  display top 5 scores from variable top5Stocks-->
+  <table class="table table-striped">
+    <thead>
+    <th>Stock Name</th>
+    <th>Weekly Consultation</th>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let stock of top5Stocks | keyvalue">
+      <td>{{stock.key}}</td>
+      <td>{{stock.value}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
