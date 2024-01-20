@@ -1,0 +1,107 @@
+/* Ajout d'une police plus professionnelle */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open+Sans', sans-serif;
+  color: #fff; /* Couleur de texte blanche pour l'ensemble de la page */
+}
+
+/* Ajout d'une surcouche semi-transparente pour l'image de fond pour améliorer la lisibilité */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Noir semi-transparent */
+  z-index: 0; /* S'assurer que le contenu est au-dessus de l'overlay */
+}
+
+/* Ajout d'un z-index au contenu pour s'assurer qu'il se trouve au-dessus de l'overlay */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Application de l'image de fond */
+.content::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/stockmarket.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+/* Styles des titres */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #fff; /* Pour une meilleure lisibilité sur le fond sombre */
+}
+
+/* Styles des cartes pour la structuration */
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Légère transparence */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styles des tableaux */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Styles des formulaires */
+input[type='text'], input[type='date'], input[type='submit'] {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #333; /* Couleur de texte pour les inputs */
+}
+
+/* Styles spécifiques pour les placeholders */
+input[type='text']::placeholder, input[type='date']::placeholder {
+  color: #fff; /* Couleur de texte blanche pour les placeholders */
+  opacity: 1; /* Pour s'assurer que la couleur de placeholder est bien visible */
+}
+
+input[type='submit'] {
+  background-color: #28a745; /* Couleur verte pour le bouton submit */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+input[type='submit']:hover {
+  background-color: #218838;
+}

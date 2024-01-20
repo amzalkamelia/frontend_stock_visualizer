@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'if_2023_angular' title`, () => {
+  it(`should have the 'projet_java_web_front' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('if_2023_angular');
+    expect(app.title).toEqual('projet_java_web_front');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, if_2023_angular');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, projet_java_web_front');
   });
 });
