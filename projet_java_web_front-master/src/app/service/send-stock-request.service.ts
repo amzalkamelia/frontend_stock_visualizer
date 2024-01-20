@@ -10,7 +10,7 @@ import {StockRecordMetaData} from "../model/StockRecordMetaData";
 
 export class SendStockRequestService {
   private readonly APPLICATION_JSON = 'application/json';
-  private readonly baseURL = 'https://projet-web-java-miage-psl.azurewebsites.net';
+  private readonly baseURL = 'http://localhost:52001';
   private readonly singleDayURL = `${this.baseURL}/stock_data/single_day`;
   private readonly dayRangeURL = `${this.baseURL}/stock_data/day_range`;
   private readonly top5URL = `${this.baseURL}/record_requests/top5/week`;

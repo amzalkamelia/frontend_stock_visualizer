@@ -17,7 +17,7 @@ import {StockRecordMetaData} from "../model/StockRecordMetaData";
   styleUrl: './stock-display.component.css'
 })
 export class StockDisplayComponent {
-  private readonly URL_STOCK = 'https://projet-web-java-miage-psl.azurewebsites.net';
+  private readonly URL_STOCK = 'http://localhost:52001';
   DataPointList: DataPoint[] | undefined;
 
   stock_key = 'IBM';
@@ -110,8 +110,8 @@ export class StockDisplayComponent {
     this.form = new FormGroup({
       stock_key: new FormControl('', Validators.required),
       // should enter a date in the format YYYY-MM-DD, and only the first field is required
-      date_from: new FormControl('', [Validators.pattern('^[0-9]{4}-(?:0[1-9]|1[0-2])-[0-2][0-9]$',), Validators.required]),
-      date_to: new FormControl('', Validators.pattern('^[0-9]{4}-(?:0[1-9]|1[0-2])-[0-2][0-9]$')),
+      date_from: new FormControl('', [Validators.pattern('^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:[0-2][0-9]|3[01])$',), Validators.required]),
+      date_to: new FormControl('', Validators.pattern('^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:[0-2][0-9]|3[01])$')),
     });
   }
 
